@@ -1,0 +1,23 @@
+{
+  "name": "Project2Group2",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Crozarts/Project2Group2.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Crozarts/Project2Group2/issues"
+  },
+  "homepage": "https://github.com/Crozarts/Project2Group2#readme",
+  "dependencies": {
+    "mysql": "^2.18.1"
+  }
+}
