@@ -23,3 +23,5 @@ require(".Project2Group2/routes/htmlRoutes.js")(app);
 app.listen(PORT, function () {
     console.log("App listening on PORT" + PORT);
 });
+
+module.exports = express;
