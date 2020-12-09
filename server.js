@@ -6,17 +6,19 @@ var app = express();
 var PORT = process.env.PORT || 8080;
 
 // Sets up the Express app to handle data parsing
-app.use(express.urlencoded({extended: true}));
+app.use(express.urlencoded({
+    extended: true
+}));
 app.use(express.json());
 
 //Static directory to be served
-app.use(express.static("Project2Group2/public"));
+app.use(express.static("./public"));
 
 //Routes
-require("./Project2Group2/routes/apiRoutes.js")(app);
-
 // HTML routing to serve different HTML files
-require(".Project2Group2/routes/htmlRoutes.js")(app);
+require("./routes/htmlRoutes.js")(app);
+
+require("./routes/apiRoutes.js")(app);
 
 // Starts teh server to begin listening
 app.listen(PORT, function () {
