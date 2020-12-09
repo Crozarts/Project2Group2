@@ -5,9 +5,8 @@ var express = require("express");
 var app = express();
 var PORT = process.env.PORT || 8080;
 
-app.use(express.urlencoded({
-    extended: true
-}));
+// Sets up the Express app to handle data parsing
+app.use(express.urlencoded({extended: true}));
 app.use(express.json());
 
 //Static directory to be served
@@ -23,5 +22,3 @@ require(".Project2Group2/routes/htmlRoutes.js")(app);
 app.listen(PORT, function () {
     console.log("App listening on PORT" + PORT);
 });
-
-module.exports = express;

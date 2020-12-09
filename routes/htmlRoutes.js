@@ -7,7 +7,7 @@ module.export = function (app) {
 
     //index route loads index.html
     app.get("/", function (req, res) {
-        res.sendFile(path.join(__dirname, "../public/index.html"));
+        res.sendFile(path.join(__dirname, "../public/home.html"));
     });
 
     //market route loads market.html
@@ -16,8 +16,8 @@ module.export = function (app) {
     });
 
     //myStore route loads myStore.html
-    app.get("/myStore", function (req, res) {
-        res.sendFile(path.join(__dirname, "../public/myStore.html"));
+    app.get("/activesales", function (req, res) {
+        res.sendFile(path.join(__dirname, "../public/activesales.html"));
     });
 
     //user route loads user.html
