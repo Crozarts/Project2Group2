@@ -39,22 +39,103 @@
     </div>
   </nav>
 
-  <div class="container p-5" id="Carousel">
-  <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+
+  <title>Bootstrap Example</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+  <style>
+    /* Make the image fully responsive */
+    
+    .carousel-inner img {
+      width: 100%;
+      height: 100%;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div id="demo" class="carousel slide" data-ride="carousel">
+    <ul class="carousel-indicators">
+      <li data-target="#demo" data-slide-to="0" class="active"></li>
+      <li data-target="#demo" data-slide-to="1"></li>
+      <li data-target="#demo" data-slide-to="2"></li>
+            <li data-target="#demo" data-slide-to="3"></li>
+                  <li data-target="#demo" data-slide-to="4"></li>
+
+    </ul>
+    <div class="carousel-inner">
+      <div class="carousel-item active">
+        <img src="https://images.unsplash.com/photo-1580238047299-558e582427bf?crop=entropy&cs=tinysrgb&fit=crop&fm=jpg&h=420&ixid=eyJhcHBfaWQiOjF9&ixlib=rb-1.2.1&q=80&w=680" alt="slide one" width="1100" height="500">
+        <div class="carousel-caption">
+          <h3>Slide One</h3>
+          <p>Description slide one</p>
+        </div>
+      </div>
+      <div class="carousel-item">
+        <img src="https://images.unsplash.com/photo-1572130456602-fed3019a174e?crop=entropy&cs=tinysrgb&fit=crop&fm=jpg&h=420&ixid=eyJhcHBfaWQiOjF9&ixlib=rb-1.2.1&q=80&w=680" alt="slide two" width="1100" height="500">
+        <div class="carousel-caption">
+          <h3>Slide Two</h3>
+          <p>Description slide two</p>
+        </div>
+      </div>
+      <div class="carousel-item">
+        <img src="https://images.unsplash.com/photo-1550828553-bb30dc55dc25?crop=entropy&cs=tinysrgb&fit=crop&fm=jpg&h=420&ixid=eyJhcHBfaWQiOjF9&ixlib=rb-1.2.1&q=80&w=680" alt="slide three" width="1100" height="500">
+        <div class="carousel-caption">
+          <h3>Slide Three</h3>
+          <p>Description slide three</p>
+        </div>
+      </div>
+            <div class="carousel-item">
+        <img src="https://images.unsplash.com/photo-1504406438164-c0e042535100?crop=entropy&cs=tinysrgb&fit=crop&fm=jpg&h=420&ixid=eyJhcHBfaWQiOjF9&ixlib=rb-1.2.1&q=80&w=680" alt="slide four" width="1100" height="500">
+        <div class="carousel-caption">
+          <h3>Slide Four</h3>
+          <p>Description slide Four</p>
+        </div>
+      </div>
+                  <div class="carousel-item">
+        <img src="https://images.unsplash.com/photo-1571407509209-73d3e4a45892?crop=entropy&cs=tinysrgb&fit=crop&fm=jpg&h=420&ixid=eyJhcHBfaWQiOjF9&ixlib=rb-1.2.1&q=80&w=680" alt="slide five" width="1100" height="500">
+        <div class="carousel-caption">
+          <h3>Slide Five</h3>
+          <p>Description slide Five</p>
+        </div>
+      </div>
+    </div>
+    <a class="carousel-control-prev" href="#demo" data-slide="prev">
+      <span class="carousel-control-prev-icon"></span>
+    </a>
+    <a class="carousel-control-next" href="#demo" data-slide="next">
+      <span class="carousel-control-next-icon"></span>
+    </a>
+  </div>
+
+
+
+
+
+  <!-- <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
     <ol class="carousel-indicators">
       <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
       <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
       <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+      <li data-target="#carouselExampleIndicators" data-slide-to="3"></li>
     </ol>
     <div class="carousel-inner">
       <div class="carousel-item active">
-        <img src="assets/img/louis.jpg" class="d-block" alt="...">
-      </div>
-      <div class="carousel-item active">
-        <img src="assets/img/louis.jpg" class="d-block" alt="...">
+        <img class="d-block w-100" src="assets/img/louis.jpg" alt="First slide">
       </div>
       <div class="carousel-item">
-        <img src="assets/img/Screen Shot 2020-12-08 at 1.33.55 PM.png " class="d-block" alt="...">
+        <img class="d-block w-100" src="assets/img/louis.jpg" alt="Second slide">
+      </div>
+      <div class="carousel-item">
+        <img class="d-block w-100" src="assets/img/Screen Shot 2020-12-08 at 1.33.55 PM.png "  alt="Third slide">
+      </div>
+      <div class="carousel-item">
+        <img class="d-block w-100" src="assets/img/Screen Shot 2020-12-08 at 1.33.55 PM.png "  alt="Fourth slide">
       </div>
     </div>
     <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
@@ -65,8 +146,8 @@
       <span class="carousel-control-next-icon" aria-hidden="true"></span>
       <span class="sr-only">Next</span>
     </a>
-  </div>
-</div>
+  </div> -->
+
   <!-- intro content -->
 
 <!-- example items for sale in cards -->
