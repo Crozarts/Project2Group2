@@ -2,7 +2,7 @@
 var path = require("path");
 
 //Routes
-module.export = function (app) {
+module.exports = function (app) {
     //Each route below handles the HTML page the user gets sent to
 
     //index route loads index.html
@@ -24,5 +24,5 @@ module.export = function (app) {
     app.get("/user", function (req, res) {
         res.sendFile(path.join(__dirname, "../public/user.html"));
     });
-    
+
 };
