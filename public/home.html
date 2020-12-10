@@ -9,8 +9,21 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/css/bootstrap.min.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.0/css/all.min.css">
   <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+<style>
+  /* Make the image fully responsive */
+  .carousel-inner img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+</style>
   <title>Title</title>
 </head>
+
 
 <body>
   <!-- nav bar -->
@@ -24,7 +37,7 @@
       <div class="collapse navbar-collapse" id="navbarNavDropdown">
         <ul class="navbar-nav ml-auto">
           <li class="nav-item active">
-            <a class="nav-link" href="home.html">Home <span class="sr-only">(current)</span></a>
+            <a class="nav-link" href="home.html">Home <i class="fas fa-home"></i><span class="sr-only">(current)</span></a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="market.html">Marketplace <i class="fas fa-shopping-cart"
@@ -42,33 +55,14 @@
               <a class="dropdown-item" href="#">Trade requests <i class="fas fa-people-arrows"></i></a>
             </div>
           </li>
-          <li class="nav-item active">
-            <a class="nav-link" href="about.html">About </a>
+          <li class="nav-item">
+            <a class="nav-link" href="about.html">About <i class="fas fa-info" style="color:  #e3b505;"></i></a>
           </li>
         </ul>
       </div>
     </nav>
   </div>
 
-
-  <title>Bootstrap Example</title>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
-  <style>
-    /* Make the image fully responsive */
-    .carousel-inner img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-    }
-  </style>
-  </head>
-
-  <body>
 
 <!-- carousel items for intro w/ sign up -->
     <div id="demo" class="carousel slide" data-ride="carousel">
@@ -86,7 +80,7 @@
           <div class="carousel-caption">
             <h3>USED COOGI FOR SALE $200</h3>
             <p>USER: DSpark826 just posted this item for sale! Sign up to see more...</p>
-            <a class="btn btn-primary" href="#" role="button">Sign Up!</a>
+            <a class="btn btn-primary" href="user.html" role="button">Sign Up!</a>
           </div>
         </div>
         <div class="carousel-item">
@@ -96,7 +90,7 @@
           <div class="carousel-caption">
             <h3>USED LOUIS VUITTON FOR SALE</h3>
             <p>USER: bubs223 just posted this item for sale! Sign up to see more... </p>
-            <a class="btn btn-primary" href="#" role="button">Sign Up!</a>
+            <a class="btn btn-primary" href="user.html" role="button">Sign Up!</a>
           </div>
         </div>
         <div class="carousel-item">
