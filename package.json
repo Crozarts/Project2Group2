@@ -19,7 +19,9 @@
   "homepage": "https://github.com/Crozarts/Project2Group2#readme",
   "dependencies": {
     "express": "^4.17.1",
-    "mysql": "^2.18.1"
+    "mysql": "^2.18.1",
+    "mysql2": "^2.2.5",
+    "sequelize": "^6.3.5"
   },
   "devDependencies": {
     "sequelize-cli": "^6.2.0"
