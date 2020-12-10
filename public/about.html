@@ -20,15 +20,15 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarNavDropdown">
           <ul class="navbar-nav ml-auto">
-            <li class="nav-item">
+            <li class="nav-item active">
               <a class="nav-link" href="home.html">Home</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="market.html">Marketplace <i class="fas fa-shopping-cart" style="color: dodgerblue;"></i></a>
             </li>
-            <li class="nav-item dropdown acitve">
+            <li class="nav-item dropdown">
               <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                Account <span class="sr-only">(current)</span>
+                Account 
               </a>
               <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                 <a class="dropdown-item" href="activesales.html">Active Sales <i class="fas fa-file-invoice-dollar" style="color: forestgreen;"></i></a>
@@ -36,34 +36,10 @@
                 <a class="dropdown-item" href="#">Trade requests <i class="fas fa-people-arrows"></i></a>
               </div>
             </li>
-            <li class="nav-item">
-              <a class="nav-link" href="about.html">About <i class="fas fa-info"></i></a>
+            <li>
+              <a class="nav-link" href="about.html">About <i class="fas fa-info"><span class="sr-only">(current)</span></i></a>
             </li>
           </ul>
         </div>
       </nav>
     </div>
-
-      <div class="jumbotron">
-        <h1 class="display-4" style="text-align: center;">My Stash <i class="fas fa-wallet" style="color:#008060;"></i></h1>
-        <p class="lead" style="text-align: center;">Keep track of your whole inventory & simply Add & Delete Items as needed!!</p>
-        <hr class="my-4">
-        <p class="lead" style="text-align: center;">
-          <a class="btn btn-success btn-lg" href="#" role="button" style="color: black;">Add <i class="far fa-plus-square" style="color: black;"></i></a>
-          <a class="btn btn-danger btn-lg" href="#" role="button" style="color: black;">Delete <i class="far fa-trash-alt" style="color: black;"></i></a>
-        </p>
-      </div>
-
-      <div class="container">
-        <div class="row">
-            <div class="team-area card-columns mx-auto justify-content-center">
-                {{ product }}
-            </div>
-        </div>
-      </div>
-
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.slim.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.1/umd/popper.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/js/bootstrap.min.js"></script>
-</body>
-</html>
