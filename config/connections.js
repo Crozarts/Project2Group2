@@ -1,7 +1,7 @@
 // This file initiates the connection to MYSQL
 
 // Dependencies
-var Sequelize - require("sequelize");
+var Sequelize = require("sequelize");
 
 var sequelize = new Sequelize("trade_post", "root", "password", {
     host: "localhost",
