@@ -6,11 +6,19 @@ module.exports = function (sequelize, DataTypes) {
             validate: {
                 len: [1, 50]
             }
+        },
+        price: {
+            type: DataTypes.DECIMAL(10, 2),
+            allowNull: false
+        },
+        sell: {
+            type: DataTypes.BOOLEAN,
+            defaultValue: false
+        },
+        trade: {
+            type: DataTypes.BOOLEAN,
+            defaultValue: false
         }
-        // // Creates a "product" model that matches up with DB
-        //     price: Sequelize.DECIMAL(10, 2),
-        //     sell: Sequelize.BOOLEAN,
-        //     trade: Sequelize.BOOLEAN
     });
     return Product
 };
