@@ -10,9 +10,6 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.0/css/all.min.css">
   <link rel="stylesheet" href="assets/css/style.css">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
   <style>
     /* Make the image fully responsive */
     .carousel-inner img {
@@ -67,7 +64,7 @@
 
 
   <!-- carousel items for intro w/ sign up -->
-  <div class="container-fluid pt-2">
+  <div class="container-fluid pt-2 pb-5">
     <div id="demo" class="carousel slide" data-ride="carousel">
       <ul class="carousel-indicators">
         <li data-target="#demo" data-slide-to="0" class="active"></li>
@@ -110,20 +107,43 @@
     </div>
   </div>
   <!-- intro content -->
-
-  <!-- example items for sale in cards -->
-  <div class="card text-left">
-    <img class="card-img-top" src="holder.js/100px180/" alt="">
-    <div class="card-body">
-      <h4 class="card-title">Title</h4>
-      <p class="card-text">iBody</p>
-    </div>
+  <div class="container" style="text-align: center; padding-top: 5px;">
+    <h1>Look at what people are selling right now!</h1>
   </div>
+  <!-- example items for sale in cards -->
+  <div class="flex flex-col gap-4 items-center h-screen w-full bg-gray-50 flex items-center justify-center p-5" style="width: 400px;">
+    <div class="w-3/2 bg-gray-200 overflow-hidden rounded-xl">
+      <div class="flex">
+        <div class="flex-auto w-48 relative">
+          <img src="http://lorempixel.com/500/500/sports/1/Dummy-Text/" alt="" class="absolute inset-0 w-100 h-100 object-cover" />
+        </div>
+        <form class="flex-auto p-6">
+          <div class="flex flex-wrap">
+            <h2 class="text-blue font-bold flex-auto text-lg font-semibold">
+              {{ name }}
+            </h2>
+            <div class="text-lg font-semibold text-gray-500">
+              {{ price }}
+            </div>
+          </div>
+          <p class="mt-4 text-sm text-gray-500">
+            Free shipping on all continental US orders.
+          </p>
+          <div class="flex space-x-3 mb-4 text-sm font-medium">
+            <div class="flex-auto flex space-x-3">
+              <button class="uppercase text-xs font-bold w-1/2 flex items-center justify-center rounded-full bg-blue-400 text-white" type="submit">
+              Buy</button>
+              <button class="uppercase text-xs font-bold w-1/2 flex items-center justify-center rounded-full border border-gray-300" type="button">Add to cart</button>
+            </div>
+          </div> 
+        </form>
+      </div>
+    </div>
   <!-- footer -->
   
-  <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.slim.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.slim.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.1/umd/popper.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/js/bootstrap.min.js"></script> -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </body>
 
 </html>
