@@ -7,7 +7,7 @@ module.exports = function(sequelize, DataTypes) {
     Merchant.associate = function(models) {
       // Associating Merchant with Posts
       // When an Merchant is deleted, also delete any associated Posts
-      Merchant.hasMany(models.Post, {
+      Merchant.hasMany(models.Product, {
         onDelete: "cascade"
       });
     };
