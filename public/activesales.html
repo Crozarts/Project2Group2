@@ -59,11 +59,52 @@
       needed!!</p>
     <hr class="my-4">
     <p class="lead" style="text-align: center;">
-      <a class="btn btn-success btn-lg" href="#" role="button" style="color: black;">Add <i class="far fa-plus-square"
-          style="color: black;"></i></a>
-      <a class="btn btn-danger btn-lg" href="#" role="button" style="color: black;">Delete <i class="far fa-trash-alt"
-          style="color: black;"></i></a>
+      <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" data-whatever="@getbootstrap">Add <i class="far fa-plus-square"
+        style="color: black;"></i></button>
+      <!-- <a class="btn btn-success btn-lg" href="#" role="button" style="color: black;">Add <i class="far fa-plus-square"
+          style="color: black;"></i></a> -->
+      <!-- <a class="btn btn-danger btn-lg" href="#" role="button" style="color: black;">Delete <i class="far fa-trash-alt"
+          style="color: black;"></i></a> -->
     </p>
+  </div>
+
+  <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Add Item <i class="fas fa-tasks"></i></h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <form>
+            <div class="form-group">
+              <label for="recipient-name" class="col-form-label">Name:</label>
+              <input type="text" class="form-control" id="recipient-name">
+            </div>
+            <div class="form-group">
+              <label for="recipient-name" class="col-form-label">Price:</label>
+              <input type="text" class="form-control" id="recipient-name">
+            </div>
+            <div class="form-group">
+              <label for="message-text" class="col-form-label">Description:</label>
+              <textarea class="form-control" id="message-text"></textarea>
+            </div>
+            <div>
+              <input type="checkbox" id="subscribeNews" name="subscribe" value="newsletter">
+              <label for="subscribeNews">Sell</label>
+              <input type="checkbox" id="subscribeNews" name="subscribe" value="newsletter">
+              <label for="subscribeNews">Trade</label>
+            </div>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary">Add to Stash <i class="fas fa-wallet"></i></button>
+        </div>
+      </div>
+    </div>
   </div>
 
   <div class="container">
