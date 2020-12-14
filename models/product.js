@@ -1,7 +1,3 @@
-const {
-    Sequelize
-} = require("sequelize")
-
 module.exports = function (sequelize, DataTypes) {
     var Product = sequelize.define("Product", {
         name: {
@@ -39,11 +35,7 @@ module.exports = function (sequelize, DataTypes) {
     Product.associate = function (models) {
         // We're saying that a Product should belong to an Merchant
         // A Product can't be created without an Merchant due to the foreign key constraint
-        Product.belongsTo(models.Merchant, {
-            foreignKey: {
-                allowNull: false
-            }
-        });
+        Product.belongsTo(models.Merchant);
     };
 
 
