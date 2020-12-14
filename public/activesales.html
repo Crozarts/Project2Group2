@@ -59,8 +59,8 @@
       needed!!</p>
     <hr class="my-4">
     <p class="lead" style="text-align: center;">
-      <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" data-whatever="@getbootstrap">Add <i class="far fa-plus-square"
-        style="color: black;"></i></button>
+      <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal"
+        data-whatever="@getbootstrap">Add <i class="far fa-plus-square" style="color: black;"></i></button>
       <!-- <a class="btn btn-success btn-lg" href="#" role="button" style="color: black;">Add <i class="far fa-plus-square"
           style="color: black;"></i></a> -->
       <!-- <a class="btn btn-danger btn-lg" href="#" role="button" style="color: black;">Delete <i class="far fa-trash-alt"
@@ -68,7 +68,8 @@
     </p>
   </div>
 
-  <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal fade bd-dark" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+    aria-hidden="true">
     <div class="modal-dialog" role="document">
       <div class="modal-content">
         <div class="modal-header">
@@ -80,7 +81,7 @@
         <div class="modal-body">
           <form>
             <div class="form-group">
-              <label for="recipient-name" class="col-form-label">Name:</label>
+              <label for="recipient-name" class="col-form-label">Item Name:</label>
               <input type="text" class="form-control" id="recipient-name">
             </div>
             <div class="form-group">
@@ -97,6 +98,11 @@
               <input type="checkbox" id="subscribeNews" name="subscribe" value="newsletter">
               <label for="subscribeNews">Trade</label>
             </div>
+            <p>Click "Chose File" to upload an image:</p>
+            <form action="/action_page.php">
+              <input type="file" id="myFile" name="filename">
+              <input type="submit">
+            </form>
           </form>
         </div>
         <div class="modal-footer">
@@ -114,7 +120,13 @@
       </div>
     </div>
   </div>
-
+  <script>
+    // Add the following code if you want the name of the file appear on select
+    $(".custom-file-input").on("change", function () {
+      var fileName = $(this).val().split("\\").pop();
+      $(this).siblings(".custom-file-label").addClass("selected").html(fileName);
+    });
+  </script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.slim.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.1/umd/popper.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/js/bootstrap.min.js"></script>
