@@ -192,7 +192,7 @@ input {
 
 .signup input[type="text"] {
 	background-color: #fff;
-	border-top: 2px solid #2c90c6;
+	border-top: 2px solid black;
 	border-right: 1px solid #000;
 	border-left: 1px solid #000;
 	border-radius: 5px 5px 0 0;
@@ -207,9 +207,9 @@ input {
 
 .signup input[type="password"] {
 	background-color: #fff;
-	border-top: 2px solid #2c90c6;
+	border-top: 2px solid black;
 	border-right: 1px solid #000;
-	border-bottom: 2px solid #2c90c6;
+	border-bottom: 2px solid black;
 	border-left: 1px solid #000;
 	border-radius: 0 0 5px 5px;
 	-moz-border-radius: 0 0 5px 5px;
@@ -223,8 +223,8 @@ input {
 }
 
 .signup input[type="submit"] {
-	background-color: #2c90c6;
-	border: 1px solid #2c90c6;
+	background-color: grey;
+	border: 1px solid grey;
 	border-radius: 15px;
 	-moz-border-radius: 15px;
 	-webkit-border-radius: 15px;
@@ -239,12 +239,12 @@ input {
 }
 
 .signup input[type="submit"]:hover {
-	background-color: #2c70c6;
-  box-shadow: 2px 2px 20px  #2c90c6, #fff 0 -1px 2px;
+	background-color:grey;
+  box-shadow: 2px 2px 20px  black, #fff 0 -1px 2px;
 }
 
 .text {
-  color: #2c90c6; 
+  color: grey; 
   font-size: 40px; 
   margin: 2% auto;
   text-align: center;
@@ -254,5 +254,5 @@ input {
 }
 
 p:hover {
-  text-shadow: 2px 2px 20px  #2c90c6, #fff 0 -1px 2px;
+  text-shadow: 2px 2px 20px  black, #fff 0 -1px 2px;
 }
