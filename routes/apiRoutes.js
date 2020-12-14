@@ -79,8 +79,8 @@ module.exports = function (app) {
     app.post("/api/new", function (req, res) {
         Product.create({
             name: req.body.name,
-            image: req.body.image,
             price: req.body.price,
+            description: req.body.description,
             sell: req.body.sell,
             trade: req.body.trade
         }).then(function (results) {

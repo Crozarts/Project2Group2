@@ -2,6 +2,7 @@ $(document).ready(function () {
     // Getting a reference to the input field where user adds a new product
     var $newItemInput = $("input.new-item");
     var $newPriceInput = $("input.item-price");
+    var $newDescriptionInput = $("input.item-description")
     // Our new todos will go inside the productContainer
     var $productContainer = $(".product-container");
     // Adding event listeners for deleting, editing, and adding products
@@ -118,6 +119,7 @@ $(document).ready(function () {
         $.post("/api/products", product, getProduct);
         $newItemInput.val("");
         $newPriceInput.val("");
+        $newDescriptionInput.val("");
     }
 
 
