@@ -82,32 +82,31 @@
           <form>
             <div class="form-group">
               <label for="recipient-name" class="col-form-label">Item Name:</label>
-              <input type="text" class="form-control" id="recipient-name">
+              <input type="text" class="form-control new-item">
             </div>
             <div class="form-group">
               <label for="recipient-name" class="col-form-label">Price:</label>
-              <input type="text" class="form-control" id="recipient-name">
+              <input type="text" class="form-control item-price">
             </div>
             <div class="form-group">
               <label for="message-text" class="col-form-label">Description:</label>
-              <textarea class="form-control" id="message-text"></textarea>
+              <textarea class="form-control item-description"></textarea>
             </div>
             <div>
-              <input type="checkbox" id="subscribeNews" name="subscribe" value="newsletter">
+              <input class="sell" type="checkbox" id="subscribeNews" name="subscribe" value="newsletter">
               <label for="subscribeNews">Sell</label>
-              <input type="checkbox" id="subscribeNews" name="subscribe" value="newsletter">
+              <input class="trade" type="checkbox" id="subscribeNews" name="subscribe" value="newsletter">
               <label for="subscribeNews">Trade</label>
             </div>
             <p>Click "Choose File" to upload an image:</p>
             <form action="/action_page.php">
               <input type="file" id="myFile" name="filename">
-              <input class="btn btn-primary" type="submit">
             </form>
           </form>
         </div>
         <div class="modal-footer bg-dark text-white">
           <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-          <button type="button" class="btn btn-primary">Add to Stash <i class="fas fa-wallet"></i></button>
+          <button id="product-form" type="button" class="btn btn-primary">Add to Stash <i class="fas fa-wallet"></i></button>
         </div>
       </div>
     </div>
@@ -127,6 +126,7 @@
       $(this).siblings(".custom-file-label").addClass("selected").html(fileName);
     });
   </script>
+  <script src="public/assets/script/activesales.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.slim.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.1/umd/popper.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/js/bootstrap.min.js"></script>
