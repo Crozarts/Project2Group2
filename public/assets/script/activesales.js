@@ -17,7 +17,7 @@ $(document).ready(function () {
     // Our Initial product array
     var products = [];
 
-    // getting products from database when page laods
+    // getting products from database when page loads
     getProducts();
 
     // This function resets the products displayed with new products from the database
