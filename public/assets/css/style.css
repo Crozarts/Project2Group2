@@ -171,11 +171,10 @@ body {
 }
 
 .left {
-  position: absolute;
-  top: 0;
-  left: 0;
+    text-align: center;
+ 
   box-sizing: border-box;
-  padding: 40px;
+
   width: 300px;
   height: 400px;
 }
