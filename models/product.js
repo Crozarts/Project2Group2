@@ -3,12 +3,12 @@ const {
 } = require("sequelize/types")
 
 module.exports = function (sequelize, DataTypes) {
-    var Product = sequelize.define("product", {
+    var Product = sequelize.define("Product", {
         name: {
             type: DataTypes.STRING,
             allowNull: false,
             validate: {
-                len: [1, 50]
+                len: [1]
             }
         },
 
@@ -28,5 +28,16 @@ module.exports = function (sequelize, DataTypes) {
         }
     });
 
-    return Product
+    Product.associate = function (models) {
+        // We're saying that a Product should belong to an Merchant
+        // A Product can't be created without an Merchant due to the foreign key constraint
+        Product.belongsTo(models.Merchant, {
+            foreignKey: {
+                allowNull: false
+            }
+        });
+    };
+
+
+    return Product;
 };
