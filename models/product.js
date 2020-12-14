@@ -12,18 +12,6 @@ module.exports = function (sequelize, DataTypes) {
             }
         },
 
-        image: {
-            type: {
-                type: Sequelize.STRING,
-            },
-            name: {
-                type: Sequelize.STRING
-            },
-            data: {
-                type: Sequelize.BLOB('long')
-            }
-        },
-
         price: {
             type: DataTypes.DECIMAL(10, 2),
             allowNull: false
