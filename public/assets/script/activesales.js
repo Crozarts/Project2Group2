@@ -12,7 +12,7 @@ $(document).ready(function () {
     // $(document).on("click", ".product-item", editProduct);
     // $(document).on("keyup", ".product-item", finishEdit);
     // $(document).on("blur", "button.delete", cancelEdit);
-    $(document).on("submit", "#product-form", insertProduct);git 
+    $("#product-form").click(insertProduct);
 
     // Our Initial product array
     var products = [];
@@ -25,7 +25,7 @@ $(document).ready(function () {
         $productContainer.empty();
         var rowsToAdd = [];
         for (var i = 0; i < products.length; i++) {
-            rowsToAdd.push(createNewCard(product[i]));
+            rowsToAdd.push(createNewCard(products[i]));
         }
         $productContainer.prepend(rowsToAdd);
     }
@@ -112,19 +112,19 @@ $(document).ready(function () {
             [
                 "<div class='card product-card bg-dark'>",
                 "<div class='card-header'>",
-                "<h2 class='card-title text-white'>", 
-                product.name, 
+                "<h2 class='card-title text-white'>",
+                product.name,
                 "</h2>",
                 "</div>",
                 "<div class='card-body'>",
                 "<ul class='list-group'>",
                 "<li class='list-group-item text-white' style='background-color:#008060;'>Price:",
-                product.price, 
+                product.price,
                 "</li>",
-                "<li class='list-group-item text-white' style='background-color:#008060;'>Description:", 
+                "<li class='list-group-item text-white' style='background-color:#008060;'>Description:",
                 product.description,
                 "</li>",
-                "<li class='list-group-item text-white' style='background-color:#008060;'>Sell:", 
+                "<li class='list-group-item text-white' style='background-color:#008060;'>Sell:",
                 product.sell,
                 "</li>",
                 "<li class='list-group-item text-white' style='background-color:#008060;'>Trade:",
@@ -156,7 +156,7 @@ $(document).ready(function () {
             trade: false
         };
 
-        $.post("/api/products", product, getProduct);
+        $.post("/api/products", product, getProducts());
         $newItemInput.val("");
         $newPriceInput.val("");
         $newDescriptionInput.val("");
@@ -164,4 +164,3 @@ $(document).ready(function () {
 
 
 })
-
