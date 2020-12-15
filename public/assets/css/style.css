@@ -1,17 +1,13 @@
-.carousel-item{
-width: 100;
-height: 265px;
-max-height: auto;
-margin: auto;
-display: block;
-  }
+.carousel-item {
+    width: 100;
+    height: 265px;
+    max-height: auto;
+    margin: auto;
+    display: block;
+}
 
 
-  /* .carousel-inner img {
-    width: 100%;
-    height: 100%;
-  } */
-
+/* About me Team Cards lines 15-146 */
   #team {
     background: #eee !important;
 }
@@ -144,10 +140,10 @@ section .section-title {
     width: 45px;
 }
 
-@charset "utf-8";
 @import url(https://fonts.googleapis.com/css?family=Titan+One);
 @import url(http://weloveiconfonts.com/api/?family=fontawesome);
 @import url(https://meyerweb.com/eric/tools/css/reset/reset.css);
+/* END OF ABOUT ME CARD TEAMS */
 
 body {
 	background:  #284B63;
