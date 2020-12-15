@@ -1,167 +1,157 @@
 $(document).ready(function () {
-    // Getting a reference to the input field where user adds a new product
-    var $newItemInput = $("input.new-item");
-    var $newPriceInput = $("input.item-price");
-    var $newDescriptionInput = $("textarea.item-description")
-    // Our new products will go inside the productContainer
-    var $productContainer = $(".product-container");
-    // Adding event listeners for deleting, editing, and adding products
-    // $(document).on("click", "button.delete", deleteProduct);
-    $(document).on("click", "input.sell", toggleSell);
-    $(document).on("click", "input.trade", toggleTrade);
-    // $(document).on("click", ".product-item", editProduct);
-    // $(document).on("keyup", ".product-item", finishEdit);
-    // $(document).on("blur", "button.delete", cancelEdit);
-    $("#product-form").click(insertProduct);
+    // Getting jQuery references to the product name, price, form, and merchant select
+    var nameInput = $(".new-item");
+    var priceInput = $(".item-price");
+    var descriptionInput = $(".item-description");
+    var sellInput = $("#sell");
+    var tradeInput = $("#trade");
+    // var activeSalesForm = $("#activeSales");
+    var merchantSelect = $("#merchant");
+    // Adding an event listener for when the form is submitted
+    // $(activeSalesForm).on("summit", handleFormSubmit);
+    $(".submit").click(handleFormSubmit);
+    // Gets the part of the url that comes after the "?" (which we have if we're updating a product)
+    var url = window.location.search;
+    var productId;
+    var merchantId;
+    // Sets a flag for whether or not we're updating a product to be false initially
+    var updating = false;
 
-    // Our Initial product array
-    var products = [];
-
-    // getting products from database when page loads
-    getProducts();
-
-    // This function resets the products displayed with new products from the database
-    function initilizeRows() {
-        $productContainer.empty();
-        var rowsToAdd = [];
-        for (var i = 0; i < products.length; i++) {
-            rowsToAdd.push(createNewCard(products[i]));
-        }
-        $productContainer.prepend(rowsToAdd);
+    // If we have this section in our url, we pull out the product id from the url
+    // In '?product_id=1', productId is 1
+    if (url.indexOf("?product_id=") !== -1) {
+        productId = url.split("=")[1];
+        getProductData(productId, "product");
+    }
+    // Otherwise if we have an merchant_id in our url, preset the merchant select box to be our Merchant
+    else if (url.indexOf("?merchant_id=") !== -1) {
+        merchantId = url.split("=")[1];
     }
 
-    // This function grabs products from the database and update the view
-    function getProducts() {
-        $.get("/api/products", function (data) {
-            products = data;
-            initilizeRows();
+    // Getting the merchants, and their products
+    getMerchants();
+
+    // A function for handling what happens when the form to create a new product is submitted
+    function handleFormSubmit(event) {
+        console.log("we are inside handleFormSubmit");
+        console.log("name",nameInput);
+        console.log("price",priceInput);
+        console.log(descriptionInput);
+        console.log(sellInput);
+        console.log(tradeInput);
+        console.log(merchantSelect);
+        event.preventDefault();
+        // Wont submit the product if we are missing a name, price, or merchant
+        if (!nameInput.val().trim() || !priceInput.val().trim() || !descriptionInput.val().trim() || !sellInput.val() || !tradeInput.val() || !merchantSelect.val()) {
+            return;
+        }
+        // Constructing a newProduct object to hand to the database
+        var newProduct = {
+            name: nameInput
+                .val()
+                .trim(),
+            price: priceInput
+                .val()
+                .trim(),
+            description: descriptionInput
+                .val()
+                .trim(),
+            sell: sellInput
+                .val(),
+            trade: tradeInput
+                .val(),
+            MerchantId: merchantSelect.val()
+        };
+        console.log(newProduct);
+
+        // If we're updating a product run updateProduct to update a product
+        // Otherwise run submitProduct to create a whole new product
+        if (updating) {
+            newProduct.id = productId;
+            updateProduct(newProduct);
+        } else {
+            submitProduct(newProduct);
+        }
+    }
+
+    // Submits a new product and brings user to market page upon completion
+    function submitProduct(product) {
+        $.post("/api/products", product, function () {
+            window.location.href = "/market";
         });
     }
 
-    // This function deletes a product when the user clicks the delete button
-    // function deleteProduct(event) {
-    //     event.stopPropogation();
-    //     var id = $(this).data("id");
-    //     $.ajax({
-    //         method: "DELETE",
-    //         url: "/api/products" + id
-    //     }).then(getProducts);
-    // }
-
-    // This function handles showing the input box for a user to edit their product
-    // function editProduct() {
-    //     var currentProduct = $(this).data("product");
-    //     $(this).children().hide();
-    //     $(this).children("input.edit").val(currentProduct.text);
-    //     $(this).children("input.edit").show();
-    //     $(this).children("input.edit").focus();
-    // }
-
-    // Toggles sell status
-    function toggleSell(event) {
-        event.stopPropogation();
-        var product = $(this).parent().data("product");
-        product.sell = !product.sell;
-        updateProduct(product);
-    }
-
-    // Toggles trade status
-    function toggleTrade(event) {
-        event.stopPropogation();
-        var product = $(this).parent().data("product");
-        product.trade = !product.trade;
-        updateProduct(product);
-    }
-
-    // This function starts updating a product in the database if a user hits the "Enter Key"
-    // While in edit mode
-    // function finishEdit(event) {
-    //     var updatedProduct = $(this).data("product");
-    //     if (event.which === 13) {
-    //         updatedProduct.text = $(this).children("input").val().trim();
-    //         $(this).blur();
-    //         updateProduct(updatedProduct);
-    //     }
-    // }
-
-    // This function updates a product in our database
-    // function updateProduct(product) {
-    //     $.ajax({
-    //         method: "PUT",
-    //         url: "/api/products",
-    //         data: product
-    //     }).then(getProducts);
-    // }
-
-    // The function is called whenver a product item is in edit mode and loses focus
-    // This cancels any edits being made
-
-    // function cancelEdit() {
-    //     var currentProduct = $(this).data("product");
-    //     if (currentProduct) {
-    //         $(this).children().hide();
-    //         $(this).children("input.edit").val(currentProduct.text);
-    //         $(this).children("span").show();
-    //         $(this).children("button").show();
-    //     }
-    // }
-
-    // This function constructs a product-item row
-    function createNewCard(product) {
-        var $newInputCard = $(
-            [
-                "<div class='card product-card bg-dark'>",
-                "<div class='card-header'>",
-                "<h2 class='card-title text-white'>",
-                product.name,
-                "</h2>",
-                "</div>",
-                "<div class='card-body'>",
-                "<ul class='list-group'>",
-                "<li class='list-group-item text-white' style='background-color:#008060;'>Price:",
-                product.price,
-                "</li>",
-                "<li class='list-group-item text-white' style='background-color:#008060;'>Description:",
-                product.description,
-                "</li>",
-                "<li class='list-group-item text-white' style='background-color:#008060;'>Sell:",
-                product.sell,
-                "</li>",
-                "<li class='list-group-item text-white' style='background-color:#008060;'>Trade:",
-                product.trade,
-                "</li>",
-                "</ul>",
-                "<a class='btn btn-primary btn-lg' href='#' role='button' style='color: black;'>Edit <i class='far fa-edit' style='color: black;'></i></a>",
-                "<a class='btn btn-danger btn-lg' href='#' role='button' style='color: black;'>Delete <i class='far fa-trash-alt' style='color: black;'></i></a>",
-                "</div>",
-                "</div>",
-            ].join("")
-        );
-        $newInputCard.find("button.delete").data("id", product.id);
-        $newInputCard.find("input.edit").css("display", "none");
-        $newInputCard.data("product", product);
-        if (product.complete) {
-            $newInputCard.find("span").css("text-decoration", "line-through");
+    // Gets product data for the current product if we're editing, or if we're adding to an merchant's existing products
+    function getProductData(id, type) {
+        var queryUrl;
+        switch (type) {
+            case "product":
+                queryUrl = "/api/products/" + id;
+                break;
+            case "merchant":
+                queryUrl = "/api/merchants/" + id;
+                break;
+            default:
+                return;
         }
-        return $newInputCard;
+        $.get(queryUrl, function (data) {
+            if (data) {
+                console.log(data.MerchantId || data.id);
+                // If this post exists, prefill our activeSales forms with its data
+                nameInput.val(data.name);
+                priceInput.val(data.price);
+                descriptionInput.val(data.description);
+                sellInput.val(data.sell);
+                tradeInput.val(data.trade);
+                merchantId = data.MerchantId || data.id;
+                // If we have a post with this id, set a flag for us to know to update the post
+                // when we hit submit
+                updating = true;
+            }
+        });
     }
 
-    // This function inserts a new product into our database and then updates the view
-    function insertProduct(event) {
-        event.preventDefault();
-        var product = {
-            name: $newItemInput.val().trim(),
-            price: $newPriceInput.val().trim(),
-            description: $newDescriptionInput.val().trim(),
-            sell: false,
-            trade: false
-        };
-
-        $.post("/api/products", product, getProducts());
-        $newItemInput.val("");
-        $newPriceInput.val("");
-        $newDescriptionInput.val("");
+    // A function to get Merchants and then render our list of Merchants
+    function getMerchants() {
+        $.get("/api/merchants", renderMerchantList);
     }
+    // Function to either render a list of merchants, or if there are none, direct the user to the page
+    // to create an merchant first
+    function renderMerchantList(data) {
+        if (!data.length) {
+            window.location.href = "/user";
+        }
+        var rowsToAdd = [];
+        for (var i = 0; i < data.length; i++) {
+            rowsToAdd.push(createMerchantRow(data[i]));
+        }
+        merchantSelect.empty();
+        console.log(rowsToAdd);
+        console.log(merchantSelect);
+        merchantSelect.append(rowsToAdd);
+        merchantSelect.val(merchantId);
+    }
+
+    // Creates the merchant options in the dropdown
+    function createMerchantRow(merchant) {
+        var listOption = $("<option>");
+        listOption.attr("value", merchant.id);
+        listOption.text(merchant.name);
+        return listOption;
+    }
+
+    // Update a given product, bring user to the market page when done
+    function updateProduct(product) {
+        $.ajax({
+                method: "PUT",
+                url: "/api/products",
+                data: product
+            })
+            .then(function () {
+                window.location.href = "/market";
+            });
+    }
+
 
 
 })
