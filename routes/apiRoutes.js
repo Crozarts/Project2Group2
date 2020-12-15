@@ -4,9 +4,9 @@ var db = require("../models");
 module.exports = function (app) {
 
     // get all products
-    app.get("/api/all", function (req, res) {
-        db.Product.findAll({}).then(function (results) {
-            res.json(results);
+    app.get("/api/products", function (req, res) {
+        db.Product.findAll({}).then(function (dbProduct) {
+            res.json(dbProduct);
         });
     });
 
@@ -76,20 +76,23 @@ module.exports = function (app) {
     });
 
     // Add a product
-    app.post("/api/new", function (req, res) {
+    app.post("/api/products", function (req, res) {
         db.Product.create({
-            name: req.body.name,
-            price: req.body.price,
-            description: req.body.description,
-            sell: req.body.sell,
-            trade: req.body.trade
-        }).then(function (results) {
-            res.json(results);
-        });
+                name: req.body.name,
+                price: req.body.price,
+                description: req.body.description,
+                sell: req.body.sell,
+                trade: req.body.trade
+            }).then(function (dbProduct) {
+                res.json(dbProduct);
+            })
+            .catch(function (err) {
+                res.json(err);
+            });
     });
 
     // Delete a product
-    app.delete("/api/product/:id", function (req, res) {
+    app.delete("/api/products/:id", function (req, res) {
         db.Product.destroy({
             where: {
                 id: req.params.id
