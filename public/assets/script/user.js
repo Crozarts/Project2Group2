@@ -34,17 +34,17 @@ $(document).ready(function() {
     }
   
     // Function for creating a new list row for merchants
-    // function createMerchantRow(merchantData) {
-    //   console.log(merchantData);
-    //   var newTr = $("<tr>");
-    //   newTr.data("merchant", merchantData);
-    //   newTr.append("<td>" + merchantData.name + "</td>");
-    //   newTr.append("<td># of posts will display when we learn joins in the next activity!</td>");
-    //   newTr.append("<td><a href='/blog?merchant_id=" + merchantData.id + "'>Go to Posts</a></td>");
-    //   newTr.append("<td><a href='/cms?merchant_id=" + merchantData.id + "'>Create a Post</a></td>");
-    //   newTr.append("<td><a style='cursor:pointer;color:red' class='delete-merchant'>Delete Merchant</a></td>");
-    //   return newTr;
-    // }
+    function createMerchantRow(merchantData) {
+      console.log(merchantData);
+      var newTr = $("<tr>");
+      newTr.data("merchant", merchantData);
+      newTr.append("<td>" + merchantData.name + "</td>");
+      newTr.append("<td># of posts will display when we learn joins in the next activity!</td>");
+      newTr.append("<td><a href='/blog?merchant_id=" + merchantData.id + "'>Go to Posts</a></td>");
+      newTr.append("<td><a href='/cms?merchant_id=" + merchantData.id + "'>Create a Post</a></td>");
+      newTr.append("<td><a style='cursor:pointer;color:red' class='delete-merchant'>Delete Merchant</a></td>");
+      return newTr;
+    }
   
     // Function for retrieving merchants and getting them ready to be rendered to the page
     function getMerchants() {
