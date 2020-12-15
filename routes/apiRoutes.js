@@ -1,18 +1,18 @@
 // Dependencies
-var Product = require("../models/product.js")
+var db = require("../models");
 
 module.exports = function (app) {
 
     // get all products
     app.get("/api/all", function (req, res) {
-        Product.findAll({}).then(function (results) {
+        db.Product.findAll({}).then(function (results) {
             res.json(results);
         });
     });
 
     // Get a specific product
     app.get("/api/:product", function (req, res) {
-        Product.findAll({
+        db.Product.findAll({
             where: {
                 name: req.param.product
             }
@@ -23,7 +23,7 @@ module.exports = function (app) {
 
     // Get all products for sale
     app.get("/api/:sell", function (req, res) {
-        Product.findAll({
+        db.Product.findAll({
             where: {
                 sell: true
             }
@@ -34,7 +34,7 @@ module.exports = function (app) {
 
     // Get all products for trade
     app.get("/api/:trade", function (req, res) {
-        Product.findAll({
+        db.Product.findAll({
             where: {
                 trade: true
             }
@@ -45,7 +45,7 @@ module.exports = function (app) {
 
     // Get all products $50 or less
     app.get("/api/products/cheaper", function (req, res) {
-        Product.findAll({
+        db.Product.findAll({
             where: {
                 price: {
                     $lte: 50
@@ -61,7 +61,7 @@ module.exports = function (app) {
 
     // Get all products $50 or more
     app.get("/api/products/expensive", function (req, res) {
-        Product.findAll({
+        db.Product.findAll({
             where: {
                 price: {
                     $gte: 50
@@ -77,7 +77,7 @@ module.exports = function (app) {
 
     // Add a product
     app.post("/api/new", function (req, res) {
-        Product.create({
+        db.Product.create({
             name: req.body.name,
             price: req.body.price,
             description: req.body.description,
@@ -90,7 +90,7 @@ module.exports = function (app) {
 
     // Delete a product
     app.delete("/api/product/:id", function (req, res) {
-        Product.destroy({
+        db.Product.destroy({
             where: {
                 id: req.params.id
             }
