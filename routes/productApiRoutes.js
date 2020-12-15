@@ -30,6 +30,7 @@ module.exports = function (app) {
 
     // POST route for saving a new product
     app.post("/api/products", function (req, res) {
+        console.log("post /api/products");
         db.Product.create(req.body).then(function (dbProduct) {
             res.json(dbProduct);
         });
