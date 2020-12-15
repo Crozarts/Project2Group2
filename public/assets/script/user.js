@@ -1,12 +1,12 @@
 $(document).ready(function() {
     // Getting references to the name input and merchant container, as well as the table body
     var nameInput = $(".merchant-name");
-    // var merchantList = $("tbody");
+    var merchantList = $("tbody");
     var merchantContainer = $(".merchant-container");
     // Adding event listeners to the form to create a new object, and the button to delete
     // an Merchant
     $(document).on("submit", ".merchant-form", handleMerchantFormSubmit);
-    // $(document).on("click", ".delete-merchant", handleDeleteButtonPress);
+    $(document).on("click", ".delete-merchant", handleDeleteButtonPress);
   
     // Getting the initial list of Merchants
     getMerchants();
@@ -24,6 +24,7 @@ $(document).ready(function() {
           .val()
           .trim()
       });
+      $('.merchant-form')[0].reset();
     }
   
     // A function for creating an merchant. Calls getMerchants upon completion
@@ -31,6 +32,19 @@ $(document).ready(function() {
       $.post("/api/merchants", merchantData)
         .then(getMerchants);
     }
+  
+    // Function for creating a new list row for merchants
+    // function createMerchantRow(merchantData) {
+    //   console.log(merchantData);
+    //   var newTr = $("<tr>");
+    //   newTr.data("merchant", merchantData);
+    //   newTr.append("<td>" + merchantData.name + "</td>");
+    //   newTr.append("<td># of posts will display when we learn joins in the next activity!</td>");
+    //   newTr.append("<td><a href='/blog?merchant_id=" + merchantData.id + "'>Go to Posts</a></td>");
+    //   newTr.append("<td><a href='/cms?merchant_id=" + merchantData.id + "'>Create a Post</a></td>");
+    //   newTr.append("<td><a style='cursor:pointer;color:red' class='delete-merchant'>Delete Merchant</a></td>");
+    //   return newTr;
+    // }
   
     // Function for retrieving merchants and getting them ready to be rendered to the page
     function getMerchants() {
@@ -45,34 +59,34 @@ $(document).ready(function() {
     }
   
     // A function for rendering the list of merchants to the page
-    // function renderMerchantList(rows) {
-    //   merchantList.children().not(":last").remove();
-    //   merchantContainer.children(".alert").remove();
-    //   if (rows.length) {
-    //     console.log(rows);
-    //     merchantList.prepend(rows);
-    //   }
-    //   else {
-    //     renderEmpty();
-    //   }
-    // }
+    function renderMerchantList(rows) {
+      merchantList.children().not(":last").remove();
+      merchantContainer.children(".alert").remove();
+      if (rows.length) {
+        console.log(rows);
+        merchantList.prepend(rows);
+      }
+      else {
+        renderEmpty();
+      }
+    }
   
     // Function for handling what to render when there are no merchants
-    // function renderEmpty() {
-    //   var alertDiv = $("<div>");
-    //   alertDiv.addClass("alert alert-danger");
-    //   alertDiv.text("You must create an Merchant before you can post a Product.");
-    //   authorContainer.append(alertDiv);
-    // }
+    function renderEmpty() {
+      var alertDiv = $("<div>");
+      alertDiv.addClass("alert alert-danger");
+      alertDiv.text("You must create an Merchant before you can post a Product.");
+      authorContainer.append(alertDiv);
+    }
   
     // Function for handling what happens when the delete button is pressed
-    // function handleDeleteButtonPress() {
-    //   var listItemData = $(this).parent("td").parent("tr").data("merchant");
-    //   var id = listItemData.id;
-    //   $.ajax({
-    //     method: "DELETE",
-    //     url: "/api/merchants/" + id
-    //   })
-    //     .then(getMerchants);
-    // }
+    function handleDeleteButtonPress() {
+      var listItemData = $(this).parent("td").parent("tr").data("merchant");
+      var id = listItemData.id;
+      $.ajax({
+        method: "DELETE",
+        url: "/api/merchants/" + id
+      })
+        .then(getMerchants);
+    }
   });
