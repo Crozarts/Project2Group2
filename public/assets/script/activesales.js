@@ -152,6 +152,7 @@ $(document).ready(function () {
         var product = {
             name: $newItemInput.val().trim(),
             price: $newPriceInput.val().trim(),
+            description: $newDescriptionInput.val().trim(),
             sell: false,
             trade: false
         };
