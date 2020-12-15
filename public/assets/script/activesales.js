@@ -1,10 +1,10 @@
 $(document).ready(function () {
     // Getting jQuery references to the product name, price, form, and merchant select
-    var nameInput = $(".new-item");
-    var priceInput = $(".item-price");
-    var descriptionInput = $(".item-description");
-    var sellInput = $("#sell");
-    var tradeInput = $("#trade");
+    // var nameInput = $(".new-item");
+    // var priceInput = $(".item-price");
+    // var descriptionInput = $(".item-description");
+    // var sellInput = $("#sell");
+    // var tradeInput = $("#trade");
     // var activeSalesForm = $("#activeSales");
     var merchantSelect = $("#merchant");
     // Adding an event listener for when the form is submitted
@@ -34,15 +34,22 @@ $(document).ready(function () {
     // A function for handling what happens when the form to create a new product is submitted
     function handleFormSubmit(event) {
         console.log("we are inside handleFormSubmit");
+        var nameInput = $(".new-item").val();
+        var priceInput = $(".item-price").val();
+        var descriptionInput = $(".item-description").val();
+        var sellInput = $("#sell").val();
+        var tradeInput = $("#trade").val();
+        // var activeSalesForm = $("#activeSales");
         console.log("name",nameInput);
         console.log("price",priceInput);
-        console.log(descriptionInput);
+        console.log("description",descriptionInput);
         console.log(sellInput);
         console.log(tradeInput);
         console.log(merchantSelect);
         event.preventDefault();
         // Wont submit the product if we are missing a name, price, or merchant
         if (!nameInput.val().trim() || !priceInput.val().trim() || !descriptionInput.val().trim() || !sellInput.val() || !tradeInput.val() || !merchantSelect.val()) {
+            console.log("we are returning");
             return;
         }
         // Constructing a newProduct object to hand to the database
@@ -66,16 +73,17 @@ $(document).ready(function () {
 
         // If we're updating a product run updateProduct to update a product
         // Otherwise run submitProduct to create a whole new product
-        if (updating) {
-            newProduct.id = productId;
-            updateProduct(newProduct);
-        } else {
+        // if (updating) {
+        //     newProduct.id = productId;
+        //     updateProduct(newProduct);
+        // } else {
             submitProduct(newProduct);
-        }
+        // }
     }
 
     // Submits a new product and brings user to market page upon completion
     function submitProduct(product) {
+        console.log("submit products");
         $.post("/api/products", product, function () {
             window.location.href = "/market";
         });
