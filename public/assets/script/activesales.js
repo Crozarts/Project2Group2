@@ -3,7 +3,7 @@ $(document).ready(function () {
     var $newItemInput = $("input.new-item");
     var $newPriceInput = $("input.item-price");
     var $newDescriptionInput = $("input.item-description")
-    // Our new todos will go inside the productContainer
+    // Our new products will go inside the productContainer
     var $productContainer = $(".product-container");
     // Adding event listeners for deleting, editing, and adding products
     // $(document).on("click", "button.delete", deleteProduct);
@@ -25,7 +25,7 @@ $(document).ready(function () {
         $productContainer.empty();
         var rowsToAdd = [];
         for (var i = 0; i < products.length; i++) {
-            rowsToAdd.push(createNewRow(product[i]));
+            rowsToAdd.push(createNewCard(product[i]));
         }
         $productContainer.prepend(rowsToAdd);
     }
@@ -44,7 +44,7 @@ $(document).ready(function () {
     //     var id = $(this).data("id");
     //     $.ajax({
     //         method: "DELETE",
-    //         url: "/api/todos" + id
+    //         url: "/api/products" + id
     //     }).then(getProducts);
     // }
 
@@ -106,6 +106,46 @@ $(document).ready(function () {
     //     }
     // }
 
+    // This function constructs a product-item row
+    function createNewCard(product) {
+        var $newInputCard = $(
+            [
+                "<div class='card product-card bg-dark'>",
+                "<div class='card-header'>",
+                "<h2 class='card-title text-white'>", 
+                product.name, 
+                "</h2>",
+                "</div>",
+                "<div class='card-body'>",
+                "<ul class='list-group'>",
+                "<li class='list-group-item text-white' style='background-color:#008060;'>Price:",
+                product.price, 
+                "</li>",
+                "<li class='list-group-item text-white' style='background-color:#008060;'>Description:", 
+                product.description,
+                "</li>",
+                "<li class='list-group-item text-white' style='background-color:#008060;'>Sell:", 
+                product.sell,
+                "</li>",
+                "<li class='list-group-item text-white' style='background-color:#008060;'>Trade:",
+                product.trade,
+                "</li>",
+                "</ul>",
+                "<a class='btn btn-primary btn-lg' href='#' role='button' style='color: black;'>Edit <i class='far fa-edit' style='color: black;'></i></a>",
+                "<a class='btn btn-danger btn-lg' href='#' role='button' style='color: black;'>Delete <i class='far fa-trash-alt' style='color: black;'></i></a>",
+                "</div>",
+                "</div>",
+            ].join("")
+        );
+        $newInputCard.find("button.delete").data("id", product.id);
+        $newInputCard.find("input.edit").css("display", "none");
+        $newInputCard.data("product", product);
+        if (product.complete) {
+            $newInputCard.find("span").css("text-decoration", "line-through");
+        }
+        return $newInputCard;
+    }
+
     // This function inserts a new product into our database and then updates the view
     function insertProduct(event) {
         event.preventDefault();
@@ -124,3 +164,4 @@ $(document).ready(function () {
 
 
 })
+
