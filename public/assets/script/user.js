@@ -1,11 +1,11 @@
 $(document).ready(function() {
     // Getting references to the name input and merchant container, as well as the table body
-    var nameInput = $("#merchant-name");
+    var nameInput = $(".merchant-name");
     // var merchantList = $("tbody");
-    // var merchantContainer = $(".merchant-container");
+    var merchantContainer = $(".merchant-container");
     // Adding event listeners to the form to create a new object, and the button to delete
     // an Merchant
-    $(document).on("submit", "#merchant-form", handleMerchantFormSubmit);
+    $(document).on("submit", ".merchant-form", handleMerchantFormSubmit);
     // $(document).on("click", ".delete-merchant", handleDeleteButtonPress);
   
     // Getting the initial list of Merchants
@@ -31,19 +31,6 @@ $(document).ready(function() {
       $.post("/api/merchants", merchantData)
         .then(getMerchants);
     }
-  
-    // Function for creating a new list row for merchants
-    // function createMerchantRow(merchantData) {
-    //   console.log(merchantData);
-    //   var newTr = $("<tr>");
-    //   newTr.data("merchant", merchantData);
-    //   newTr.append("<td>" + merchantData.name + "</td>");
-    //   newTr.append("<td># of posts will display when we learn joins in the next activity!</td>");
-    //   newTr.append("<td><a href='/blog?merchant_id=" + merchantData.id + "'>Go to Posts</a></td>");
-    //   newTr.append("<td><a href='/cms?merchant_id=" + merchantData.id + "'>Create a Post</a></td>");
-    //   newTr.append("<td><a style='cursor:pointer;color:red' class='delete-merchant'>Delete Merchant</a></td>");
-    //   return newTr;
-    // }
   
     // Function for retrieving merchants and getting them ready to be rendered to the page
     function getMerchants() {
