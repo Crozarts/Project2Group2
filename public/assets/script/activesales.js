@@ -12,7 +12,7 @@ $(document).ready(function () {
     // $(document).on("click", ".product-item", editProduct);
     // $(document).on("keyup", ".product-item", finishEdit);
     // $(document).on("blur", "button.delete", cancelEdit);
-    $(document).on("submit", "#product-form", insertProduct);
+    $(document).on("submit", "#product-form", insertProduct);git 
 
     // Our Initial product array
     var products = [];
