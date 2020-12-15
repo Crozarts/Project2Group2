@@ -16,7 +16,7 @@
 
   <div class="container-fluid">
     <nav class="navbar navbar-expand-lg navbar-dark" style="background-color: #284B63;">
-      <a class="navbar-brand" href="#">Navbar</a>
+      <a class="navbar-brand" href="#">Sell Panda</a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
         aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -59,8 +59,9 @@
       needed!!</p>
     <hr class="my-4">
     <p class="lead" style="text-align: center;">
-      <button type="button" class="btn btn-dark text-white" style="background-color:#008060;" data-toggle="modal" data-target="#exampleModal"
-        data-whatever="@getbootstrap">Add Item <i class="fas fa-tasks" style="color: white;"></i></button>
+      <button type="button" class="btn btn-dark text-white" style="background-color:#008060;" data-toggle="modal"
+        data-target="#exampleModal" data-whatever="@getbootstrap">Add Item <i class="fas fa-tasks"
+          style="color: white;"></i></button>
       <!-- <a class="btn btn-success btn-lg" href="#" role="button" style="color: black;">Add <i class="far fa-plus-square"
           style="color: black;"></i></a> -->
       <!-- <a class="btn btn-danger btn-lg" href="#" role="button" style="color: black;">Delete <i class="far fa-trash-alt"
@@ -80,21 +81,21 @@
         <div class="modal-body bg-dark text-white">
           <form>
             <div class="form-group">
-              <label for="recipient-name" class="col-form-label">Item Name:</label>
-              <input type="text" class="form-control new-item">
+              <label for="recipient-name" class="col-form-label">Item Name: </label>
+              <input type="text" class="form-control new-item" placeholder="Type Item Name" />
             </div>
             <div class="form-group">
-              <label for="recipient-name" class="col-form-label">Price:</label>
-              <input type="text" class="form-control item-price">
+              <label for="recipient-name" class="col-form-label">Price: </label>
+              <input type="text" class="form-control item-price" placeholder="Type Price of Item" />
             </div>
             <div class="form-group">
-              <label for="message-text" class="col-form-label">Description:</label>
-              <textarea class="form-control item-description"></textarea>
+              <label for="message-text" class="col-form-label">Description: </label>
+              <textarea class="form-control item-description" placeholder="Type Item Description"></textarea>
             </div>
             <div class="checkbox">
               <p>Looking to sell, trade, or both? Please select:</p>
-              <label><input type="checkbox" value="">Sell</label>
-              <label><input type="checkbox" value="">Trade</label>
+              <label><input type="checkbox" value="" />Sell </label>
+              <label><input type="checkbox" value="" />Trade </label>
             </div>
             <p>Click "Choose File" to upload an image:</p>
             <form action="/action_page.php">
@@ -104,7 +105,8 @@
         </div>
         <div class="modal-footer bg-dark text-white">
           <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-          <button id="product-form" type="button" class="btn btn-dark text-white" style="background-color: #008060;">Add to Stash <i class="fas fa-wallet"></i></button>
+          <button id="product-form" type="button" class="btn btn-dark text-white" data-dismiss="modal" style="background-color: #008060;">Add
+            to Stash <i class="fas fa-wallet"></i></button>
         </div>
       </div>
     </div>
@@ -117,17 +119,17 @@
       </div>
     </div>
   </div>
-  <script>
+  <!-- <script>
     // Add the following code if you want the name of the file appear on select
     $(".custom-file-input").on("change", function () {
       var fileName = $(this).val().split("\\").pop();
       $(this).siblings(".custom-file-label").addClass("selected").html(fileName);
     });
-  </script>
-  <script src="public/assets/script/activesales.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.slim.min.js"></script>
+  </script> -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.1/umd/popper.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  <script src="assets/script/activesales.js"></script>
 </body>
 
 </html>
