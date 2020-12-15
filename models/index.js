@@ -22,7 +22,7 @@ fs
   .forEach(function (file) {
     // var model = sequelize["import"](path.join(__dirname, file));
     // sequelize version >= 6.0.0
-    const model = require(path.join(__dirname, file))(sequelize, Sequelize.DataTypes)
+    const model = require(path.join(__dirname, file))(sequelize, Sequelize.DataTypes);
     db[model.name] = model;
   });
 
