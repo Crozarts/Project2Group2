@@ -1,3 +1,17 @@
+body {
+    background-color:  #284B63;
+    text-align: center;
+    font-family: Arial, sans-serif;
+    font-size: 14px;
+    line-height: 1.5em;
+}
+
+.carousel-inner img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
 .carousel-item {
     width: 100;
     height: 265px;
@@ -145,13 +159,6 @@ section .section-title {
 @import url(https://meyerweb.com/eric/tools/css/reset/reset.css);
 /* END OF ABOUT ME CARD TEAMS */
 
-body {
-	background:  #284B63;
-  text-align: center;
-	font-family: Arial, sans-serif;
-	font-size: 14px;
-	line-height: 1.5em;
-}
 
 [class*="fontawesome-"]:before {
   font-family: 'FontAwesome', sans-serif;
