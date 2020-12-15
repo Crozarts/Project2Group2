@@ -3,102 +3,58 @@ var db = require("../models");
 
 module.exports = function (app) {
 
-    // get all products
+    // GET route for getting all of the products
     app.get("/api/products", function (req, res) {
-        db.Product.findAll({}).then(function (dbProduct) {
+        var query = {};
+        if (req.query.merchant_id) {
+            query.MerchantId = req.query.merchant_id;
+        }
+        db.Product.findAll({
+            where: query
+        }).then(function (dbProduct) {
             res.json(dbProduct);
         });
     });
 
-    // Get a specific product
-    app.get("/api/:product", function (req, res) {
-        db.Product.findAll({
+    // Get route for retrieving a single product
+    app.get("/api/products/:id", function (req, res) {
+        db.Product.findOne({
             where: {
-                name: req.param.product
+                id: req.params.id
             }
-        }).then(function (results) {
-            res.json(results);
+        }).then(function (dbProduct) {
+            console.log(dbProduct);
+            res.json(dbProduct);
         });
     });
 
-    // Get all products for sale
-    app.get("/api/:sell", function (req, res) {
-        db.Product.findAll({
-            where: {
-                sell: true
-            }
-        }).then(function (results) {
-            res.json(results);
-        });
-    });
-
-    // Get all products for trade
-    app.get("/api/:trade", function (req, res) {
-        db.Product.findAll({
-            where: {
-                trade: true
-            }
-        }).then(function (results) {
-            res.json(results);
-        });
-    });
-
-    // Get all products $50 or less
-    app.get("/api/products/cheaper", function (req, res) {
-        db.Product.findAll({
-            where: {
-                price: {
-                    $lte: 50
-                }
-            },
-            order: [
-                ["price", "DESC"]
-            ]
-        }).then(function (results) {
-            res.json(results);
-        });
-    });
-
-    // Get all products $50 or more
-    app.get("/api/products/expensive", function (req, res) {
-        db.Product.findAll({
-            where: {
-                price: {
-                    $gte: 50
-                }
-            },
-            order: [
-                ["price", "ASC"]
-            ]
-        }).then(function (results) {
-            res.json(results);
-        });
-    });
-
-    // Add a product
+    // POST route for saving a new product
     app.post("/api/products", function (req, res) {
-        db.Product.create({
-                name: req.body.name,
-                price: req.body.price,
-                description: req.body.description,
-                sell: req.body.sell,
-                trade: req.body.trade
-            }).then(function (dbProduct) {
-                res.json(dbProduct);
-            })
-            .catch(function (err) {
-                res.json(err);
-            });
+        db.Product.create(req.body).then(function (dbProduct) {
+            res.json(dbProduct);
+        });
     });
 
-    // Delete a product
+    // DELETE route for deleting products
     app.delete("/api/products/:id", function (req, res) {
         db.Product.destroy({
             where: {
                 id: req.params.id
             }
-        }).then(function () {
-            res.end();
+        }).then(function (dbProduct) {
+            res.json(dbProduct);
+        });
+    });
+
+    // PUT route for updating products
+    app.put("/api/products", function (req, res) {
+        db.Product.update(
+            req.body, {
+                where: {
+                    id: req.body.id
+                }
+            }).then(function (dbProduct) {
+            res.json(dbProduct);
         });
     });
 };

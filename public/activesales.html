@@ -79,7 +79,7 @@
           </button>
         </div>
         <div class="modal-body bg-dark text-white">
-          <form>
+          <form id="activeSales">
             <div class="form-group">
               <label for="recipient-name" class="col-form-label">Item Name: </label>
               <input type="text" class="form-control new-item" placeholder="Type Item Name" />
@@ -92,21 +92,26 @@
               <label for="message-text" class="col-form-label">Description: </label>
               <textarea class="form-control item-description" placeholder="Type Item Description"></textarea>
             </div>
-            <div class="checkbox">
-              <p>Looking to sell, trade, or both? Please select:</p>
-              <label><input type="checkbox" value="" />Sell </label>
-              <label><input type="checkbox" value="" />Trade </label>
+            <div class="form-group">
+              <label for="category">Select Merchant:</label>
+              <select class="form-control" id="merchant">
+              </select>
+              <div class="checkbox">
+                <p>Looking to sell, trade, or both? Please select:</p>
+                <label><input id="sell" type="checkbox" value="" />Sell </label>
+                <label><input id="trade" type="checkbox" value="" />Trade </label>
+              </div>
+              <p>Click "Choose File" to upload an image:</p>
+              <form action="/action_page.php">
+                <input type="file" id="myFile" name="filename">
+              </form>
             </div>
-            <p>Click "Choose File" to upload an image:</p>
-            <form action="/action_page.php">
-              <input type="file" id="myFile" name="filename">
-            </form>
+            <div class="modal-footer bg-dark text-white">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+              <button id="product-form" type="submit" class="btn btn-dark text-white submit" data-dismiss="modal"
+                style="background-color: #008060;">Add
+                to Stash <i class="fas fa-wallet"></i></button>
           </form>
-        </div>
-        <div class="modal-footer bg-dark text-white">
-          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-          <button id="product-form" type="button" class="btn btn-dark text-white" data-dismiss="modal" style="background-color: #008060;">Add
-            to Stash <i class="fas fa-wallet"></i></button>
         </div>
       </div>
     </div>
